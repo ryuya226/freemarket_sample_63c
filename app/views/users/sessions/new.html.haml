@@ -10,7 +10,11 @@
     // 入力フォーム
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "container__login-panel__signin"}) do |f|
       = f.email_field :email, class: "container__login-panel__signin__group input-text", autocomplete: "email", placeholder: "メールアドレス"
+      = render partial: 'users/shared/error_messages', locals: {user: @user, column: "email"}
+      
       = f.password_field :password, class: "container__login-panel__signin__group input-text", autocomplete: "current_password", placeholder: "パスワード"
+      = render partial: 'users/shared/error_messages', locals: {user: @user, column: "password"}
+      
       = f.submit "ログイン", class: "container__login-panel__signin__group submit-btn"
       
       // TODO パスワード再設定の処理を作成
